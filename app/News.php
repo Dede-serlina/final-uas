@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class News extends Model
 {
     protected $fillable = [
-        'title', 'writer', 'publisher'
+        'title', 'deskripsion'
     ];
 }

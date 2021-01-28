@@ -1,4 +1,4 @@
-@extends('books.layout')
+@extends('dashboard.layout')
   
 @section('content')
 
@@ -7,17 +7,14 @@
     <div class="row justify-content-center align-items-center">
         <div class="card" style="width: 24rem;">
             <div class="card-header">
-            Detail Buku
+            Detail Berita
             </div>
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Judul: </b>{{$book->title}}</li>
-                    <li class="list-group-item"><b>Penulis: </b>{{$book->writer}}</li>
-                    <li class="list-group-item"><b>Penerbut: </b>{{$book->publisher}}</li>
+                    <li class="list-group-item"><b>Judul: </b>{{$items->title}}</li>
+                    <li class="list-group-item"><b>Keterangan: </b>{{$items->deskripsion}}</li>
                 </ul>
             </div>
-            <a class="btn btn-success" href="{{ route('books.index') }}">Kembali</a>
-
         </div>
     </div>
 </div>

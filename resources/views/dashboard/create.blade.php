@@ -1,13 +1,14 @@
-@extends('books.layout')
+@extends('dashboard.layout')
   
 @section('content')
    
+
 <div class="container mt-5">
    
     <div class="row justify-content-center align-items-center">
         <div class="card" style="width: 24rem;">
             <div class="card-header">
-            Edit Buku
+            Tambah Berita
             </div>
             <div class="card-body">
                 @if ($errors->any())
@@ -20,25 +21,20 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('books.update',$book->id) }}" id="myForm">
+            <form method="post" action="{{ route('dashboard.store') }}" id="myForm">
             @csrf
-            @method('PUT')
                 <div class="form-group">
                     <label for="title">Judul</label>
-                    <input type="text" name="title" class="form-control" id="title" value="{{ $book->title }}" aria-describedby="title" placeholder="Masukkan Judul Buku">
+                    <input type="text" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Masukkan Judul">
                 </div>
                 <div class="form-group">
-                    <label for="writer">Penulis</label>
-                    <input type="text" name="writer" class="form-control" id="writer" value="{{ $book->writer }}" aria-describedby="writer" placeholder="Masukkan Nama Penulis">
-                </div>
-                <div class="form-group">
-                    <label for="publisher">Penerbit</label>
-                    <input type="text" name="publisher" class="form-control" id="publisher" value="{{ $book->publisher }}" aria-describedby="publisher"  placeholder="Masukkan Nama Penerbit">
+                    <label for="deskripsion">Keterangan</label>
+                    <textarea type="text" name="deskripsion" class="form-control" id="deskripsion" aria-describedby="deskripsion" placeholder="Masukkan keterangan" rows="3"></textarea>
                 </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             </div>
         </div>
     </div>
-</div>
+    </div>
 @endsection

@@ -1,13 +1,13 @@
-@extends('books.layout')
+@extends('dashboard.layout')
  
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb mt-3 mb-3">
             <div class="text-left">
-                <h2>Kelola Data Buku</h2>
+                <h2>Kelola Data</h2>
             </div>
             <div class="text-right">
-                <a class="btn btn-success" href="{{ route('books.create') }}">Tambah Buku</a>
+                <a class="btn btn-success" href="{{ route('dashboard.create') }}">Tambah Data</a>
             </div>
         </div>
     </div>
@@ -25,23 +25,21 @@
         <tr>
             <th>No</th>
             <th>Judul</th>
-            <th>Penulis</th>
-            <th>Penerbit</th>
+            <th>Keterangan</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($books as $key => $book)
+        @foreach ($items as $key => $berita)
         <tr>
           
             <td>{{ $key+1 }}</td>
-            <td>{{ $book->title }}</td>
-            <td>{{ $book->writer }}</td>
-            <td>{{ $book->publisher }}</td>
+            <td>{{ $berita->title }}</td>
+            <td>{{ $berita->deskripsion }}</td>
             <td>
-                <form action="{{ route('books.destroy',$book->id) }}" method="POST">
+                <form action="{{ route('dashboard.destroy',$berita->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('books.show',$book->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('dashboard.show',$berita->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('dashboard.edit',$berita->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')

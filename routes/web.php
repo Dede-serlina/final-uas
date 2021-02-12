@@ -14,5 +14,8 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::resource('/', 'HomeController');
+Route::resource('/', 'BerandaController');
+Route::resource('/berita', 'BerandaController');
+Auth::routes();
+Route::get('/admin', 'HomeController@index')->name('home');
 Route::resource('dashboard', 'DashboardController');

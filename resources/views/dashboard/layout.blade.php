@@ -16,7 +16,7 @@
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="{{ asset('img/Realtree-Spas-logo_White-Color_280x@2x.webp') }}" alt="" width="220"
+        <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('img/Realtree-Spas-logo_White-Color_280x@2x.webp') }}" alt="" width="220"
                 height="52"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,30 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#"><i class="fab fa-instagram"></i></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fas fa-user-alt"></i></a>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-alt"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @guest
+                            
+                        
+                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                        <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                        @else
+                        <a class="dropdown-item" href="{{ url('/admin') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                        @endguest
+                    </div>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
@@ -66,9 +88,9 @@
         </div>
     </nav>
     <!-- akhir navbar-->
-        <div class="container">
+        <main>
             @yield('content')
-        </div>
+        </main>
     <!-- footer -->
     <div class="jumbotron jumbotron-fluid bg-dark mt-3 mb-0">
         <div class="row container mx-auto">
